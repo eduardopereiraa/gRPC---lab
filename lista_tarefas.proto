@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package DefinicaoTarefas;
+
+service APIListaDeTarefas {
+   rpc ListarTodas (Vazio) returns (ListaDeTarefas);
+   rpc AdicionarTarefa (Tarefa) returns (Tarefa);
+   rpc ConcluirTarefa (TarefaID) returns (Tarefa);
+}
+
+message Tarefa {
+   int32  id          = 1;
+   string descricao   = 2;
+   string data        = 3;
+   string responsavel = 4;
+   bool   realizado   = 5;
+}
+
+message ListaDeTarefas {
+   repeated Tarefa lista = 1;
+}
+
+message Vazio {}
+
+message TarefaID {
+   int32 id = 1;
+}
